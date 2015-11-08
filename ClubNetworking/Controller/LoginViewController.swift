@@ -24,7 +24,7 @@ class LoginViewController: UIViewController {
     func didSignIn() {
         AppManagement.sharedInstance.signIn { (success) -> () in
             if success {
-                let homeViewController = Utils.mainStoryboard.instantiateViewControllerWithIdentifier("HomeViewController") as? HomeViewController
+                let homeViewController = Utils.mainStoryboard.instantiateViewControllerWithIdentifier("MainViewController") as? MainViewController
                 let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDelegate.window?.rootViewController = homeViewController
             }

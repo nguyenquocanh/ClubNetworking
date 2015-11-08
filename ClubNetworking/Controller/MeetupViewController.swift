@@ -11,6 +11,8 @@ import pop
 
 class MeetupViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate {
     
+    @IBOutlet weak var btnCall: UIButton!
+    @IBOutlet weak var btnJoin: UIButton!
     private let numberOfCards: UInt = 5
     private let frameAnimationSpringBounciness:CGFloat = 9
     private let frameAnimationSpringSpeed:CGFloat = 16
@@ -39,6 +41,9 @@ class MeetupViewController: UIViewController, KolodaViewDataSource, KolodaViewDe
         kolodaView.dataSource = self
         kolodaView.delegate = self
         self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        
+        self.btnCall.initButtonWithBackgroundColor(UIColor.clearColor(), withTextColor: UIColor.whiteColor(), withBorderColor: UIColor.whiteColor())
+        self.btnJoin.initButtonWithBackgroundColor(UIColor.clearColor(), withTextColor: UIColor.whiteColor(), withBorderColor: UIColor.whiteColor())
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,8 +68,15 @@ class MeetupViewController: UIViewController, KolodaViewDataSource, KolodaViewDe
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
+//        let meetupView = NSBundle.mainBundle().loadNibNamed("MeetupView",
+//            owner: self, options: nil)[0] as! MeetupView
+//        meetupView.imgImage.image = UIImage(named: "cards_\(index + 1)")
+//        meetupView.lblTitle.text = "Topic \(index + 1)"
+//        meetupView.lblTime.text = "Time: 9:45 13-11-2015"
+//        meetupView.lblAddress.text = "125 Amoy St, Singapore"
         return UIImageView(image: UIImage(named: "cards_\(index + 1)"))
     }
+    
     func kolodaViewForCardOverlayAtIndex(koloda: KolodaView, index: UInt) -> OverlayView? {
         return NSBundle.mainBundle().loadNibNamed("CustomOverlayView",
             owner: self, options: nil)[0] as? OverlayView
